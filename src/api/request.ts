@@ -3,14 +3,14 @@
 import { cache } from 'react';
 import { BookInfo } from '@/types';
 
-export const getSentence = cache(async (): Promise<BookInfo> => {
-  return {
-    sentence: "It isn't what you have or who you are or where you are or what you are doing that makes you happy or unhappy.",
-    title: "인간관계론",
-    author: "데일 카네기",
-    location: "1층, 신간자료실",
-    code: "158.1 C289hK",
-  }
+export const getSentence = cache(async (): Promise<{
+  result: true;
+  data: BookInfo;
+} | {
+  result: false;
+  data?: BookInfo;
+  error?: string;
+}> => {
 
   try {
     const spreadsheetId = process.env.SHEET_ID;
@@ -23,9 +23,9 @@ export const getSentence = cache(async (): Promise<BookInfo> => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        client_id: process.env.GOOGLE_CLIENT_ID,
-        client_secret: process.env.GOOGLE_CLIENT_SECRET,
-        refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+        client_id: process.env.NEXT_GOOGLE_CLIENT_ID,
+        client_secret: process.env.NEXT_GOOGLE_CLIENT_SECRET,
+        refresh_token: process.env.NEXT_GOOGLE_REFRESH_TOKEN,
         grant_type: 'refresh_token',
       }),
     });
@@ -53,17 +53,19 @@ export const getSentence = cache(async (): Promise<BookInfo> => {
       throw new Error('데이터가 없습니다.');
     }
 
-    // 데이터 가공
-    return rows.slice(1).map((row: string[]) => ({
-      columnC: row[0] || '',
-      columnD: row[1] || '',
-      columnE: row[2] || '',
-      columnF: row[3] || '',
-      columnG: row[4] || '',
-    }));
+    const randomIndex = Math.floor(Math.random() * rows.length) % rows.length;
+    const [sentence, title, author, location, code] = rows[randomIndex];
 
-  } catch (error) {
+    return {
+      result: true,
+      data: {sentence,title,author,location,code}
+    }
+
+  } catch (error: any) {
     console.error('Google Sheets API 요청 실패:', error);
-    throw error;
+    return {
+      result: false,
+      error: error?.message
+    }
   }
 }); 

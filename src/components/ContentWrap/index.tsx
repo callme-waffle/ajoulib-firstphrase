@@ -16,7 +16,10 @@ export const ContentWrap = () => {
     const fetchSentence = async () => {
       try {
         const response = await axios.get('/api/sentence');
-        setBookInfo(response?.data || null); // 첫 번째 문장만 표시
+        const {result, data, error} = response?.data;
+        if (!result) throw new Error(error);
+        
+        setBookInfo(data); // 첫 번째 문장만 표시
         setLoading(false);
       } catch (err) {
         setError('문장을 불러오는데 실패했습니다.');
