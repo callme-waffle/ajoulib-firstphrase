@@ -8,7 +8,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error in sentence API:', error);
     return NextResponse.json(
-      { error: '문장을 불러오는데 실패했습니다.' },
+      { result: false,error: '문장을 불러오는데 실패했습니다.' },
       { status: 500 }
     );
   }
