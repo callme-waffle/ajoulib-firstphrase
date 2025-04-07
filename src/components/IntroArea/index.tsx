@@ -1,18 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 
-import { BookInfo } from "@/types";
-
 // style
 import * as S from "./style";
+
+// types
+import { BookInfo } from "@/types";
 
 // interfaces
 type IntroAreaProps = {
   topRate: number,
   info: BookInfo | null
 }
-
-// components
-
 
 const IntroArea: React.FC<IntroAreaProps> = ({ topRate, info }) => {
   if (!info) return <></>;

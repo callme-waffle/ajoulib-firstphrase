@@ -25,3 +25,21 @@ export const AppSection = styled.section`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const StyledSection = styled.section`
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem;
+  box-sizing: border-box;
+
+  position: relative;
+  overflow: hidden;
+`;
+
+export const TopLogo = styled.img`
+  height: 2.5rem;
+`;

@@ -53,9 +53,10 @@ export const getSentence = cache(async (): Promise<{
       throw new Error('데이터가 없습니다.');
     }
 
-    const randomIndex = Math.floor(Math.random() * rows.length) % rows.length;
-    const [sentence, title, author, location, code] = rows[randomIndex];
+    let randomIndex = Math.floor(Math.random() * rows.length) % rows.length;
+    if (randomIndex === 0) randomIndex = 1;
 
+    const [sentence, title, author, location, code] = rows[randomIndex];
     return {
       result: true,
       data: {sentence,title,author,location,code}
