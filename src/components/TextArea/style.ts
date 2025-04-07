@@ -22,7 +22,12 @@ export const Content = styled.span`
   font-size: 1.5rem;
   line-height: 1.5;
   color: #333;
-`; 
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
 
 export const OpenQuota = styled.img`
   position: absolute;
@@ -30,8 +35,8 @@ export const OpenQuota = styled.img`
   left: 0;
 
   width: 0.75rem;
-
 `;
+
 export const CloseQuota = styled.img`
   position: absolute;
   bottom: 0;
@@ -39,5 +44,4 @@ export const CloseQuota = styled.img`
   transform: translate(-100%, -100%);
 
   width: 0.75rem;
-
 `;

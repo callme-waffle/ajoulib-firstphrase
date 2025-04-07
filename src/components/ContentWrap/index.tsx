@@ -35,7 +35,6 @@ export const ContentWrap = () => {
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const percent = (e.currentTarget.scrollTop / (e.currentTarget.scrollHeight - e.currentTarget.clientHeight)) * 100;
-    console.log(percent);
     setScroll(percent);
   }
 

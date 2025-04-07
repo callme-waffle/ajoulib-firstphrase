@@ -16,6 +16,8 @@ export const IntroAreaWrap = styled.section`
 `;
 
 export const BookTitleLoc = styled.section`
+  width: 100%;
+  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,11 +27,20 @@ export const BookTitleLoc = styled.section`
     font-size: 2rem;
     font-weight: 700;
     color: #1361A7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 
   & h3 {
     font-size: 1.25rem;
     font-weight: 300;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 `;
 

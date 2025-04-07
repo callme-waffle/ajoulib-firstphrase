@@ -4,7 +4,6 @@ import { getSentence } from "../../../api/request";
 
 
 export async function TextArea() {
-  console.log("sejfio");
   const sentence = await getSentence();
 
   return (
