@@ -58,7 +58,12 @@ docker run -p 3000:3000 aj-lib-phrase
 
 ```env
 # 예시
-NEXT_PUBLIC_API_URL=your_api_url
+NEXT_GOOGLE_CLIENT_ID=구글_CLIENT_ID
+NEXT_GOOGLE_CLIENT_SECRET=구글_CLIENT_SECRET
+NEXT_GOOGLE_REFRESH_TOKEN=구글_OAUTH_REFRESH_TOKEN
+
+# 아래 값은 수정없이 그대로 복사-붙여넣기 하시면 됩니다
+SHEET_ID=1EWOwthZHGsknOfE0k7NSk7x8JDE7IHDPcfqusGHm21g
 ```
 
 ---
