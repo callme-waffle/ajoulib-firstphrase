@@ -25,6 +25,14 @@ export const useBookInfo = (): [boolean, string | null, BookInfo | null] => {
 
   useEffect(() => {
     fetchSentence();
+    // setBookInfo({
+    //   "sentence": "베스트셀러 범죄소설가가 되었을 때 소소한 위험 요소가 있다면 어딜 가나 이런 질문을 받는다는 것이다.베스트셀러 범죄소설가가 되었을 때 소소한 위험 요소가 있다면 어딜 가나 이런 질문을 받는다는 것이다.",
+    //   "title": "겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건",
+    //   "author": "James, P. D",
+    //   "location": "1층.큐레이션",
+    //   "code": "823.914 J28mK이"
+    // })
+    // setLoading(false);
   }, []);
 
   return [loading, error, book_info];

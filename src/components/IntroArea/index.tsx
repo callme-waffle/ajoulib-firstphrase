@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, forwardRef, RefObject } from "react";
 
 // style
 import * as S from "./style";
@@ -8,16 +8,17 @@ import { BookInfo } from "@/types";
 
 // interfaces
 type IntroAreaProps = {
-  topRate: number,
+  scroll_rate: number,
   info: BookInfo | null
 }
 
-const IntroArea: React.FC<IntroAreaProps> = ({ topRate, info }) => {
+const IntroArea = forwardRef<HTMLElement, IntroAreaProps>(({ scroll_rate, info }, ref) => {
+
   if (!info) return <></>;
 
-  return <S.IntroAreaWrap style={{
-    opacity: topRate / 100,
-    transform: `translateY(calc(-100% + ${topRate*6/10}%))`
+  return <S.IntroAreaWrap ref={ref} style={{
+    opacity: `${scroll_rate/100}`,
+    top: `calc(${-2 * (100-scroll_rate) / 100}rem)`
   }}>
     <h3>오늘의 책</h3>
     <S.BookTitleLoc>
@@ -29,6 +30,6 @@ const IntroArea: React.FC<IntroAreaProps> = ({ topRate, info }) => {
       <span>{info.code}</span>
     </S.BookLocSpec>
   </S.IntroAreaWrap>
-};
+});
 
 export default IntroArea

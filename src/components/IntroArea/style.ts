@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const IntroAreaWrap = styled.section`
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -9,9 +11,9 @@ export const IntroAreaWrap = styled.section`
 
   font-family: var(--font-ajou), sans-serif;
 
-  position: sticky;
-  top: 25%;
-  transform: translateY(-50%);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
   z-index: 100;
 `;
 
@@ -27,9 +29,10 @@ export const BookTitleLoc = styled.section`
     font-size: 2rem;
     font-weight: 700;
     color: #1361A7;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    word-break: keep-all;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
     width: 100%;
   }
 
@@ -37,10 +40,21 @@ export const BookTitleLoc = styled.section`
     font-size: 1.25rem;
     font-weight: 300;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    word-break: keep-all;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
     width: 100%;
+  }
+
+  @media (max-height: 760px) {
+    & h2 {
+      font-size: 1.5rem !important;
+    }
+
+    & h3 {
+      font-size: 1rem !important;
+    }
   }
 `;
 
