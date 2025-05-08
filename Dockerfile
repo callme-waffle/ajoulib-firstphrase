@@ -1,11 +1,11 @@
 # 노드 이미지를 기반으로 Dockerfile 작성
-FROM node:14-alpine
+FROM node:23.11.0-bullseye
 
 # 앱 디렉토리 생성
 WORKDIR /usr/src/app
 
 # package.json 및 package-lock.json을 복사하여 종속성 설치를 위해 추가
-COPY package*.json ./
+COPY package.json ./
 
 # 종속성 설치
 RUN npm install
@@ -17,4 +17,6 @@ COPY . .
 RUN npm run build
 
 # 앱 실행을 위한 명령어 정의
+EXPOSE 3000
+
 CMD ["npm", "start"]
