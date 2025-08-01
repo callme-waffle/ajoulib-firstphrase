@@ -7,7 +7,7 @@ const PageTitleArea = ({ scroll }: { scroll: number }) => {
 
   const date_text = useMemo(() => {
     const now = new Date();
-    return `${now.getFullYear()}.${now.getMonth()}.${now.getDate()}.`;
+    return `${now.getFullYear()}. ${now.getMonth()+1}. ${now.getDate()}.`;
   }, []);
 
   const text_opacity = useMemo(() => {
