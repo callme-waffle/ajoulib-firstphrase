@@ -14,7 +14,7 @@ export const getSentence = cache(async (): Promise<{
 
   try {
     const spreadsheetId = process.env.SHEET_ID;
-    const range = 'C:G';
+    const range = 'C:H';
     
     // Google OAuth2 토큰 가져오기
     const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
@@ -56,10 +56,10 @@ export const getSentence = cache(async (): Promise<{
     let randomIndex = Math.floor(Math.random() * rows.length) % rows.length;
     if (randomIndex === 0) randomIndex = 1;
 
-    const [sentence, title, author, location, code] = rows[randomIndex];
+    const [sentence, title, author, location, code, publisher] = rows[randomIndex];
     return {
       result: true,
-      data: {sentence,title,author,location,code}
+      data: {sentence,title,author,location,code,publisher}
     }
 
   } catch (error: any) {

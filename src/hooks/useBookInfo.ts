@@ -30,7 +30,8 @@ export const useBookInfo = (): [boolean, string | null, BookInfo | null] => {
     //   "title": "겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건겨우살이 살인사건",
     //   "author": "James, P. D",
     //   "location": "1층.큐레이션",
-    //   "code": "823.914 J28mK이"
+    //   "code": "823.914 J28mK이",
+    //   "publisher": "출반사ㅏ아아ㅏㅏㅏㅇ"
     // })
     // setLoading(false);
   }, []);

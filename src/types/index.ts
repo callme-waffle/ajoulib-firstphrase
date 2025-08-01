@@ -4,4 +4,5 @@ export interface BookInfo {
   author: string;
   location: string;
   code: string;
+  publisher: string;
 }
