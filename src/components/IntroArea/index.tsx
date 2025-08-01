@@ -27,6 +27,7 @@ const IntroArea = forwardRef<HTMLElement, IntroAreaProps>(({ scroll_rate, info }
     </S.BookTitleLoc>
     <S.BookLocSpec>
       <span>{info.location}</span>
+      <span>{info.code}</span>
     </S.BookLocSpec>
   </S.IntroAreaWrap>
 });
