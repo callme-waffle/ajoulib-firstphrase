@@ -23,6 +23,7 @@ export const Content = styled.span`
   font-size: 1.5rem;
   line-height: 1.5;
   color: #333;
+  word-break: keep-all;
 
   /* display: -webkit-box;
   -webkit-line-clamp: 3;

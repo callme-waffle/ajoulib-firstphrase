@@ -14,7 +14,7 @@ export const getSentence = cache(async (): Promise<{
 
   try {
     const spreadsheetId = process.env.SHEET_ID;
-    const range = 'C:H';
+    const range = 'D:L';
     
     // Google OAuth2 토큰 가져오기
     const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
@@ -56,10 +56,17 @@ export const getSentence = cache(async (): Promise<{
     let randomIndex = Math.floor(Math.random() * rows.length) % rows.length;
     if (randomIndex === 0) randomIndex = 1;
 
-    const [sentence, title, author, location, code, publisher] = rows[randomIndex];
+    const [ title, author, translator, publisher, publishedAt, code, isbn, firstSentence, secondSentence ] = rows[randomIndex];
     return {
       result: true,
-      data: {sentence,title,author,location,code,publisher}
+      data: {
+        sentence: firstSentence,
+        // sentence: "알렉세이 표도로비치 카라마조프는 우리 군(郡)의 지주 표도르 파블로비치 카라마조프의 셋째 아들이었는데, 그의 아버지는 정확히 삼십 년 전 비극적이고 어두운 최후를 맞이했기 때문에(지금도 우리 도시에서는 회상하곤 할 만큼) 한때 대단한 유명세를 탔던바, 그의 최후에 대해서는 때가 되면 얘기를 하겠다.",
+        title,
+        author,translator,
+        publisher,
+        code
+      }
     }
 
   } catch (error: any) {

@@ -23,11 +23,10 @@ const IntroArea = forwardRef<HTMLElement, IntroAreaProps>(({ scroll_rate, info }
     <h3>오늘의 책</h3>
     <S.BookTitleLoc>
       <h2>{info.title}</h2>
-      <h3>{info.author} | {info.publisher}</h3>
+      <h3>{info.author}{info.translator ? ` | ${info.translator} 역` : ""}</h3>
     </S.BookTitleLoc>
     <S.BookLocSpec>
-      <span>{info.location}</span>
-      <span>{info.code}</span>
+      <span>{info.publisher}</span>
     </S.BookLocSpec>
   </S.IntroAreaWrap>
 });
