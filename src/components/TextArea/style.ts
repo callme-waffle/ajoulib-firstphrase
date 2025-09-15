@@ -15,11 +15,18 @@ export const TextContainer = styled.section`
   transform: translate(-50%, -50%);
 `;
 
+export const TextContentWrap = styled.div`
+  position: relative;
+  width: 100%;
+  height: auto;
+`;
+
 export const Content = styled.span`
   /* font-family: "Nanum Pen Script", sans-serif; */
   font-family: var(--font-taom), sans-serif;
 
   width: calc(100% - 3rem);
+  display: block;
 
   font-size: 1.5rem;
   line-height: 1.5;
@@ -28,10 +35,7 @@ export const Content = styled.span`
   color: #333;
   word-break: keep-all;
 
-  /* display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden; */
+  margin: 1.5rem 0;
 `;
 
 export const OpenQuota = styled.img`
@@ -49,4 +53,23 @@ export const CloseQuota = styled.img`
   transform: translate(-100%, -100%);
 
   width: 0.75rem;
+`;
+
+export const FadeOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+
+  /* 상단 3줄은 완전 투명, 그 아래부터 불투명으로 전환 */
+  background: linear-gradient(
+    to bottom,
+    rgba(224,231,237,0) 0,
+    rgba(224,231,237,0) calc(1.5rem * 1.7 * 3),
+    rgba(224,231,237,1) calc(1.5rem * 1.7 * 3 + 2rem),
+    rgba(224,231,237,1) 100%
+  );
+  transition: opacity .25s ease;
 `;
