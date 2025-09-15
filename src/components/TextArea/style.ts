@@ -54,7 +54,7 @@ export const Content = styled.span`
   color: #333;
   word-break: keep-all;
 
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
 `;
 
 export const OpenQuota = styled.img`
