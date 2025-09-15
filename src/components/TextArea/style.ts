@@ -16,12 +16,15 @@ export const TextContainer = styled.section`
 `;
 
 export const Content = styled.span`
-  font-family: "Nanum Pen Script", sans-serif;
+  /* font-family: "Nanum Pen Script", sans-serif; */
+  font-family: var(--font-taom), sans-serif;
 
   width: calc(100% - 3rem);
 
   font-size: 1.5rem;
   line-height: 1.5;
+  /* line-height: 1.25; */
+  line-height: 1.7;
   color: #333;
   word-break: keep-all;
 

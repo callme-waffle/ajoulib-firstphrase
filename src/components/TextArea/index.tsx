@@ -20,6 +20,7 @@ const TextArea = forwardRef<HTMLElement, TextAreaProps>(({ top_margin, scroll_ra
       <S.Content>{sentence}</S.Content>
       <S.CloseQuota src="/quota_close.png" alt="Close Quota" />
     </S.TextContainer>
+    
   );
 });
 

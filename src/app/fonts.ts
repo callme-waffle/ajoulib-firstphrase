@@ -5,3 +5,9 @@ export const ajouFont = localFont({
   variable: '--font-ajou',
   display: 'swap',
 }); 
+
+export const taomFont = localFont({
+  src: '../../public/fonts/BinggraeTaom.woff',
+  variable: '--font-taom',
+  display: 'swap',
+}); 
