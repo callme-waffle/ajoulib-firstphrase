@@ -13,6 +13,25 @@ export const TextContainer = styled.section`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  & .fade-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+
+    /* 상단 3줄은 완전 투명, 그 아래부터 불투명으로 전환 */
+    background: linear-gradient(
+      to bottom,
+      rgba(224,231,237,0) 0,
+      rgba(224,231,237,0) calc(1.5rem * 1.7 * 3),
+      rgba(224,231,237,1) calc(1.5rem * 1.7 * 3 + 2rem),
+      rgba(224,231,237,1) 100%
+    );
+    transition: opacity .25s ease;
+  }
 `;
 
 export const TextContentWrap = styled.div`
@@ -55,21 +74,4 @@ export const CloseQuota = styled.img`
   width: 0.75rem;
 `;
 
-export const FadeOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-
-  /* 상단 3줄은 완전 투명, 그 아래부터 불투명으로 전환 */
-  background: linear-gradient(
-    to bottom,
-    rgba(224,231,237,0) 0,
-    rgba(224,231,237,0) calc(1.5rem * 1.7 * 3),
-    rgba(224,231,237,1) calc(1.5rem * 1.7 * 3 + 2rem),
-    rgba(224,231,237,1) 100%
-  );
-  transition: opacity .25s ease;
-`;
+export const FadeOverlay = styled.div``;
