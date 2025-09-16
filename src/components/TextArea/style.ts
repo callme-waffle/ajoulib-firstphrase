@@ -22,6 +22,16 @@ export const TextContainer = styled.section`
     bottom: 0;
     pointer-events: none;
 
+    @media (max-height: 760px) {
+      /* 상단 3줄은 완전 투명, 그 아래부터 불투명으로 전환 */
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0) calc(1.5rem * 1.7 * 3),
+        rgba(255, 255, 255, 1) calc(1.5rem * 1.7 * 3 + 2rem),
+        rgba(255, 255, 255, 1) 100%
+      );
+    }
     /* 상단 3줄은 완전 투명, 그 아래부터 불투명으로 전환 */
     background: linear-gradient(
       to bottom,
