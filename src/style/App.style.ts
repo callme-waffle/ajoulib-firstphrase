@@ -3,7 +3,7 @@ import { breathe, breathe_out } from "./App.transition";
 
 export const GlobalSection = styled.section`
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
 
   position: relative;
 
