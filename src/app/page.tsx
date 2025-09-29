@@ -28,16 +28,15 @@ export default function Home() {
     <S.AppSection>
       <S.StyledSection>
         <S.TopLogo src="/ajoulib_logo_4x.png" alt="AjouLib Logo" />
-        <PageTitleArea scroll={scroll}/>
-          <S.LoadingCharacterContainer className={!loading ? "fading" : ""}>
-            <S.LoadingCharacter src="/ajoulib_reading_chito.png" alt="AjouLib Chito"/>
-          </S.LoadingCharacterContainer>
-          <ScrollArea 
-            book_info={!delay_loading ? book_info : null} onScroll={setScroll}
-            className={!loading ? "visibling" : ""}
-          />
-          <LinkButton scroll={scroll} href={button_link}/>
-          <StyleElements scroll={scroll}/>
+        <S.LoadingCharacterContainer className={!loading ? "fading" : ""}>
+          <S.LoadingCharacter src="/ajoulib_reading_chito.png" alt="AjouLib Chito"/>
+        </S.LoadingCharacterContainer>
+        <ScrollArea 
+          book_info={!delay_loading ? book_info : null} onScroll={setScroll}
+          className={!loading ? "visibling" : ""}
+        />
+        <LinkButton href={button_link}/>
+        <StyleElements scroll={scroll}/>
       </S.StyledSection>
     </S.AppSection>
   </S.GlobalSection>;

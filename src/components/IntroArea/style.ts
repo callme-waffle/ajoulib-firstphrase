@@ -11,7 +11,8 @@ export const IntroAreaWrap = styled.section`
 
   font-family: var(--font-ajou), sans-serif;
 
-  position: absolute;
+  position: relative;
+  top: 10%;
   left: 50%;
   transform: translate(-50%);
   z-index: 100;

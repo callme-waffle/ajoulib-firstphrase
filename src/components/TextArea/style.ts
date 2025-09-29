@@ -4,13 +4,13 @@ export const TextContainer = styled.section`
   min-width: 2rem;
   min-height: 2rem;
   width: 100%;
+  height: 100%;
   
   display: flex;
   justify-content: center;
   align-items: center;
 
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -47,7 +47,8 @@ export const TextContainer = styled.section`
 export const TextContentWrap = styled.div`
   position: relative;
   width: 100%;
-  height: auto;
+  height: calc(100% - 2rem);
+  overflow: auto;
 `;
 
 export const Content = styled.span`

@@ -62,23 +62,16 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ book_info, onScroll, ...props }
     };
   }, [book_info, scroll_rate]);
 
-  return <S.ScrollAreaWrap 
-    onScroll={handleScrollRate} 
-    style={{marginTop: `-${Math.min(scroll_rate/2, 30)}%`}}
-    {...props}
-  >
+  return <S.ScrollAreaWrap {...props}>
     <S.ScrollCover ref={cover_ref}>
       <IntroArea ref={introarea_ref}
-        scroll_rate={scroll_rate} 
         info={book_info}
       />
       <TextArea ref={textarea_ref}
         top_margin={introarea_ref.current?.clientHeight || 0} 
-        scroll_rate={scroll_rate} 
         sentence={book_info?.sentence || ""}
       />
     </S.ScrollCover>
-    <S.FakeScrollArea style={{ height: `${total_scroll}px` }}/>
   </S.ScrollAreaWrap>
 };
 
