@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState, useEffect } from "react";
 
 // styles
 import * as S from '@/style/App.style';
@@ -33,7 +33,8 @@ export default function Home() {
             <S.LoadingCharacter src="/ajoulib_reading_chito.png" alt="AjouLib Chito"/>
           </S.LoadingCharacterContainer>
           <ScrollArea 
-            book_info={!delay_loading ? book_info : null} onScroll={setScroll}
+            book_info={!loading ? book_info : null} onScroll={setScroll}
+            is_ready={delay_loading === false}
             className={!loading ? "visibling" : ""}
           />
           <LinkButton scroll={scroll} href={button_link}/>

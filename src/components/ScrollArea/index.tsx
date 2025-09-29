@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, HTMLAttributes, useMemo } from "react";
+import { useState, useEffect, useRef, HTMLAttributes, useMemo, useCallback } from "react";
 
 // style
 import * as S from "./style";
@@ -10,24 +10,28 @@ import { useScrollState } from "@/hooks/useScrollState";
 // components
 import IntroArea from "@/components/IntroArea";
 import TextArea from "@/components/TextArea";
+import { useAutoScroll } from "@/hooks/useAutoScroll";
 
 // interfaces
 type ScrollAreaProps = {
   book_info: BookInfo | null;
+  is_ready?: boolean;
   onScroll: (v: number) => void;
 } & Omit<HTMLAttributes<HTMLTableSectionElement>, "onScroll">;
 
-const ScrollArea: React.FC<ScrollAreaProps> = ({ book_info, onScroll, ...props }) => {
+const ScrollArea: React.FC<ScrollAreaProps> = ({ book_info, onScroll, is_ready = false, ...props }) => {
 
   const cover_ref = useRef<HTMLTableSectionElement>(null);
   const introarea_ref = useRef<HTMLTableSectionElement>(null);
   const textarea_ref = useRef<HTMLTableSectionElement>(null);
+
+  const [is_autoscroll_finished] = useAutoScroll(cover_ref, is_ready);
   
   const [total_scroll, setTotalScroll] = useState(0);
-  const [scroll_rate, scroll_overflow, handleScrollRate] = useScrollState();
+  const [scroll_rate, scroll_overflow, handleScrollRate] = useScrollState(!is_autoscroll_finished);
   
   useEffect(() => {
-    // console.log("scroll", scroll);
+    // console.log("scroll", scroll_rate);
     onScroll(scroll_rate);
   }, [scroll_rate]);
 
