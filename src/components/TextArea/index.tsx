@@ -11,21 +11,21 @@ type TextAreaProps = {
 const TextArea = forwardRef<HTMLElement, TextAreaProps>(({ top_margin, sentence }, ref) => {
   const contentRef = useRef<HTMLSpanElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
-  const [lineHeightPx, setLineHeightPx] = useState<number>(0);
-  const [contentFullHeight, setContentFullHeight] = useState<number>(0);
 
   const measureHeights = () => {
     const el = contentRef.current;
-    if (!el) return;
+    const container = el?.closest('[data-text-container]') as HTMLElement;
+    if (!el || !container) return;
+    
     const styles = window.getComputedStyle(el);
-    const lh = parseFloat(styles.lineHeight);
     const mt = parseFloat(styles.marginTop || "0");
     const mb = parseFloat(styles.marginBottom || "0");
     const full = el.scrollHeight + mt + mb;
-    setLineHeightPx(lh);
-    setContentFullHeight(full);
-    const threeLines = lh * 3 + mt + mb;
-    setIsOverflowing(full > threeLines + 1);
+    
+    // 컨테이너의 실제 높이를 기준으로 overflow 판단
+    const containerHeight = container.clientHeight;
+    const availableHeight = containerHeight - 2 * 0.75; // quota 이미지 높이 제외 (0.75rem * 2)
+    setIsOverflowing(full > availableHeight);
   };
 
   useEffect(() => {
@@ -45,13 +45,21 @@ const TextArea = forwardRef<HTMLElement, TextAreaProps>(({ top_margin, sentence 
     return Math.max(0, Math.min(1, v));
   }, [isOverflowing]);
 
+  const displayable_size = useMemo(() => `(10% + ${top_margin}px + 1rem)`, [top_margin]);
+  const top_calc = useMemo(() =>
+    `calc(${displayable_size} + (100% - ${displayable_size} ) / 2)`
+  , [displayable_size]);
+
   return (
-    <S.TextContainer ref={ref} style={{
-      top: `calc((10% + ${top_margin}px + 1rem) + (100% - (10% + ${top_margin}px + 1rem) ) / 2)`,
+    <S.TextContainer ref={ref} data-text-container style={{
+      top: top_calc,
       height: isOverflowing ? `calc(90% - ${top_margin}px - 1rem)` : 'auto'
     }}>
       <S.OpenQuota src="/quota_open.png" alt="Open Quota" />
-      <S.TextContentWrap>
+      <S.TextContentWrap style={{
+        height: isOverflowing ? `calc(100% - 2rem)` : `auto`,
+        overflow: isOverflowing ? 'auto' : 'visible'
+      }}>
         <S.Content ref={contentRef}>{sentence}</S.Content>
         {isOverflowing && (
           <S.FadeOverlay className="fade-overlay" style={{ opacity: overlayOpacity }} />

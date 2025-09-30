@@ -47,8 +47,6 @@ export const TextContainer = styled.section`
 export const TextContentWrap = styled.div`
   position: relative;
   width: 100%;
-  height: calc(100% - 2rem);
-  overflow: auto;
 `;
 
 export const Content = styled.span`
