@@ -26,6 +26,8 @@ export const BookTitleLoc = styled.section`
   align-items: flex-start;
   justify-content: center;
 
+  margin-top: 1.5rem;
+
   & h2 {
     font-size: 2rem;
     font-weight: 700;

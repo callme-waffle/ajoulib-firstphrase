@@ -16,7 +16,6 @@ const IntroArea = forwardRef<HTMLElement, IntroAreaProps>(({ info }, ref) => {
   if (!info) return <></>;
 
   return <S.IntroAreaWrap ref={ref}>
-    <h3>오늘의 책</h3>
     <S.BookTitleLoc>
       <h2>{info.title}</h2>
       <h3>{info.author}{info.translator ? ` | ${info.translator} 역` : ""}</h3>
