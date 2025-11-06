@@ -40,6 +40,7 @@ export const BookTitleLoc = styled.section`
   }
 
   & h3 {
+    color: black;
     font-size: 1.25rem;
     font-weight: 300;
 
@@ -70,6 +71,7 @@ export const BookLocSpec = styled.section`
   gap: .5rem;
 
   font-family: "Noto Sans KR", sans-serif;
+  color: black;
 
   & span {
     font-size: 1rem;
