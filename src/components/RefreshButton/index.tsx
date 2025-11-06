@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 // styles
 import * as S from "./style";
-import { IconReload } from "@tabler/icons-react";
+import { IconArrowBigRightLine } from "@tabler/icons-react";
 
 const LinkButton = ({onClick}: {onClick?: () => any}) => {
 
@@ -11,7 +11,7 @@ const LinkButton = ({onClick}: {onClick?: () => any}) => {
   }, [onClick]);
 
   return <S.LinkButton onClick={onLinkButtonClick}>
-    <IconReload color="#1361A7"/>
+    <IconArrowBigRightLine color="#1361A7"/>
   </S.LinkButton>
 };
 
