@@ -3,12 +3,11 @@
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import * as S from "./style";
 
-type TextAreaProps = { 
-  top_margin: number,
+type TextAreaProps = {
   sentence: string,
 };
 
-const TextArea = forwardRef<HTMLElement, TextAreaProps>(({ top_margin, sentence }, ref) => {
+const TextArea = forwardRef<HTMLElement, TextAreaProps>(({ sentence }, ref) => {
   const contentRef = useRef<HTMLSpanElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
@@ -25,11 +24,19 @@ const TextArea = forwardRef<HTMLElement, TextAreaProps>(({ top_margin, sentence 
     // 컨테이너의 실제 높이를 기준으로 overflow 판단
     const containerHeight = container.clientHeight;
     const availableHeight = containerHeight - 2 * 0.75; // quota 이미지 높이 제외 (0.75rem * 2)
+    console.log("full: ", full);
+    console.log("availableHeight: ", availableHeight);
     setIsOverflowing(full > availableHeight);
   };
 
   useEffect(() => {
-    measureHeights();
+    console.log("isOverflowing: ", isOverflowing);
+  }, [isOverflowing])
+
+  useEffect(() => {
+    setTimeout(() => {
+      measureHeights();
+    }, 100);
   }, [sentence]);
 
   useEffect(() => {
@@ -45,30 +52,21 @@ const TextArea = forwardRef<HTMLElement, TextAreaProps>(({ top_margin, sentence 
     return Math.max(0, Math.min(1, v));
   }, [isOverflowing]);
 
-  const displayable_size = useMemo(() => `(10% + ${top_margin}px + 1rem)`, [top_margin]);
-  const top_calc = useMemo(() =>
-    `calc(${displayable_size} + (100% - ${displayable_size} ) / 2)`
-  , [displayable_size]);
-
-  return (
+  return (<S.TextAreaWrapper>
     <S.TextContainer ref={ref} data-text-container style={{
-      top: top_calc,
-      height: isOverflowing ? `calc(90% - ${top_margin}px - 1rem)` : 'auto'
     }}>
-      <S.OpenQuota src="/quota_open.png" alt="Open Quota" />
-      <S.TextContentWrap style={{
-        height: isOverflowing ? `calc(100% - 2rem)` : `auto`,
-        overflow: isOverflowing ? 'auto' : 'visible'
-      }}>
+      <S.OpenQuotaWrap>
+        <S.OpenQuota src="/quota_open.png" alt="Open Quota" />
+      </S.OpenQuotaWrap>
         <S.Content ref={contentRef}>{sentence}</S.Content>
         {isOverflowing && (
           <S.FadeOverlay className="fade-overlay" style={{ opacity: overlayOpacity }} />
         )}
-      </S.TextContentWrap>
-      <S.CloseQuota src="/quota_close.png" alt="Close Quota" />
+      <S.CloseQuotaWrap>
+        <S.CloseQuota src="/quota_close.png" alt="Close Quota" />
+      </S.CloseQuotaWrap>
     </S.TextContainer>
-    
-  );
+  </S.TextAreaWrapper>);
 });
 
 export default TextArea;

@@ -10,7 +10,6 @@ import { useDelayState } from "@/hooks/useDelayState";
 
 // components
 import ScrollArea from "@/components/ScrollArea";
-import PageTitleArea from "@/components/PageTitleArea";
 import StyleElements from "@/components/StyleElements";
 import LinkButton from "@/components/LinkButton";
 import * as api from "@/api/request";

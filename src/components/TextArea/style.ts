@@ -1,18 +1,27 @@
 import styled from "styled-components";
 
+export const TextAreaWrapper = styled.section`
+  flex: 1 1 0;
+  min-height: 0;
+
+  position: relative;
+`;
+
 export const TextContainer = styled.section`
   min-width: 2rem;
   min-height: 2rem;
-  width: 100%;
-  height: 100%;
   
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-height: 100%;
+  
+  /* display: flex;
+  flex-direction: column; */
 
-  position: absolute;
+  position: relative;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow: auto;
 
   & .fade-overlay {
     position: absolute;
@@ -50,7 +59,6 @@ export const TextContentWrap = styled.div`
 `;
 
 export const Content = styled.span`
-  /* font-family: "Nanum Pen Script", sans-serif; */
   font-family: var(--font-taom), sans-serif;
 
   width: calc(100% - 3rem);
@@ -58,7 +66,7 @@ export const Content = styled.span`
 
   font-size: 1.5rem;
   line-height: 1.5;
-  /* line-height: 1.25; */
+
   line-height: 1.7;
   color: #333;
   word-break: keep-all;
@@ -66,20 +74,33 @@ export const Content = styled.span`
   margin: 1.5rem auto;
 `;
 
-export const OpenQuota = styled.img`
-  position: absolute;
+export const OpenQuotaWrap = styled.section`
+  width: 100%;
+  
+  position: sticky;
   top: 0;
-  left: 0;
+`;
 
+export const OpenQuota = styled.img`
+  position: relative;
+  float: left;
+
+  flex: 0 1 0;
   width: 0.75rem;
 `;
 
-export const CloseQuota = styled.img`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: translate(-100%, -100%);
+export const CloseQuotaWrap = styled.section`
+  width: 100%;
+  
+  position: sticky;
+  bottom: 1rem;
+`;
 
+export const CloseQuota = styled.img`
+  position: relative;
+  float: right;
+
+  flex: 0 1 0;
   width: 0.75rem;
 `;
 

@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef, HTMLAttributes, useMemo } from "react";
+import { useRef, HTMLAttributes } from "react";
 
 // style
 import * as S from "./style";
 
 // types
 import { BookInfo } from "@/types";
-import { useScrollState } from "@/hooks/useScrollState";
 
 // components
 import IntroArea from "@/components/IntroArea";
@@ -22,45 +21,6 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ book_info, onScroll, ...props }
   const cover_ref = useRef<HTMLTableSectionElement>(null);
   const introarea_ref = useRef<HTMLTableSectionElement>(null);
   const textarea_ref = useRef<HTMLTableSectionElement>(null);
-  
-  const [total_scroll, setTotalScroll] = useState(0);
-  const [scroll_rate, scroll_overflow, handleScrollRate] = useScrollState();
-  
-  useEffect(() => {
-    // console.log("scroll", scroll);
-    onScroll(scroll_rate);
-  }, [scroll_rate]);
-
-  useEffect(() => {
-    if (scroll_overflow <= 0) return;
-    if (!cover_ref?.current) return;
-    cover_ref.current.scrollTop = scroll_overflow;
-  }, [scroll_overflow]);
-
-  // window resize 이벤트에 대응하는 useEffect
-  useEffect(() => {
-    const handleResize = () => {
-      if (textarea_ref.current && cover_ref.current) {
-        const infoarea_height = introarea_ref.current?.clientHeight || 0;
-        const cover_height = cover_ref.current.clientHeight;
-        const textarea_height = textarea_ref.current.clientHeight;
-
-        const calced_total_scroll = Math.max(
-          (cover_height / 2) + infoarea_height + (textarea_height*3/2),
-          cover_height * 1.5
-        );
-        
-        setTotalScroll(calced_total_scroll);
-      }
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [book_info, scroll_rate]);
 
   return <S.ScrollAreaWrap {...props}>
     <S.ScrollCover ref={cover_ref}>
@@ -68,7 +28,6 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ book_info, onScroll, ...props }
         info={book_info}
       />
       <TextArea ref={textarea_ref}
-        top_margin={introarea_ref.current?.clientHeight || 0} 
         sentence={book_info?.sentence || ""}
       />
     </S.ScrollCover>
