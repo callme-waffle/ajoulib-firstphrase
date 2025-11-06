@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const LinkButton = styled.div`
-  /* width: 100%; */
-  flex: 1 1 auto;
-  padding: 1.5em;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   position: sticky;
   margin-bottom: 2rem;
@@ -16,7 +18,7 @@ export const LinkButton = styled.div`
 
   text-align: center;
 
-  background-color: #1361A7;
+  background-color: #fafafa;
   border-radius: 1em;
 
   cursor: pointer;

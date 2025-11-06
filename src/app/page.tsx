@@ -14,6 +14,7 @@ import PageTitleArea from "@/components/PageTitleArea";
 import StyleElements from "@/components/StyleElements";
 import LinkButton from "@/components/LinkButton";
 import * as api from "@/api/request";
+import RefreshButton from "@/components/RefreshButton";
 
 export default function Home() {
 
@@ -54,7 +55,10 @@ export default function Home() {
           book_info={!delay_loading ? book_info : null} onScroll={setScroll}
           className={!loading ? "visibling" : ""}
         />
-        <LinkButton href={button_link}/>
+        <S.ButtonSection>
+          <LinkButton href={button_link}/>
+          <RefreshButton onClick={() => window.location.reload()}/>
+        </S.ButtonSection>
         <StyleElements scroll={scroll}/>
       </S.StyledSection>
     </S.AppSection>
