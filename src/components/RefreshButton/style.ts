@@ -19,6 +19,7 @@ export const LinkButton = styled.div`
   text-align: center;
 
   background-color: #fafafa;
+  border: 1px solid #aaaaaa;
   border-radius: 1em;
 
   cursor: pointer;
