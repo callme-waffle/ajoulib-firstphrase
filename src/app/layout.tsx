@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import StyledComponentsRegistry from "./registry";
 import { ajouFont, taomFont } from "./fonts";
 import "./globals.css";
+import GoogleAnalytics from "@/lib/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
       </head>
       <body>
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+					<GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+				) : null}
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
