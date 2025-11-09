@@ -11,7 +11,7 @@ const LinkButton = ({href}: {href: string}) => {
 
   return <S.LinkButton 
     onClick={onLinkButtonClick}
-  >도서관에서 이어보기</S.LinkButton>
+  >책으로 이동</S.LinkButton>
 };
 
 export default LinkButton

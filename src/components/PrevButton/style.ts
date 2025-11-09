@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-export const LinkButton = styled.div`
+export const PrevButton = styled.div<{isVisible: boolean}>`
   width: 4.5rem;
-  height: 4.5rem;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
   position: sticky;
-  margin-bottom: 2rem;
   left: 0;
 
   font-family: var(--font-ajou), sans-serif;
@@ -19,8 +18,17 @@ export const LinkButton = styled.div`
   text-align: center;
 
   background-color: #fafafa;
-  border: 1px solid #aaaaaa;
+  border: 1px solid #aaaaaaff;
   border-radius: 1em;
+  
+  opacity: 1;
+  transition: all .2s cubic-bezier(0, 1, 1, 1);
 
   cursor: pointer;
+
+  ${ ({isVisible}) => (isVisible) ? "" : `
+    border: 1px solid #aaaaaa00;
+    width: 0;
+    opacity: 0;
+  ` }
 `;

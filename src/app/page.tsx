@@ -13,11 +13,18 @@ import ScrollArea from "@/components/ScrollArea";
 import StyleElements from "@/components/StyleElements";
 import LinkButton from "@/components/LinkButton";
 import * as api from "@/api/request";
-import RefreshButton from "@/components/RefreshButton";
+import NextButton from "@/components/NextButton";
+import PrevButton from "@/components/PrevButton";
 
 export default function Home() {
 
-  const [loading, error, book_info] = useBookInfo();
+  const [
+    {
+      loading, book_info,
+      prev_remain
+    }, 
+    { moveForward, moveBackward }
+  ] = useBookInfo();
   const [book_url, setBookURL] = useState<string | null>(null);
 
   const delay_loading = useDelayState(loading, 200);
@@ -34,6 +41,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    console.log("book_info", book_info);
     if (!book_info?.code) return;
     updateBookURL(book_info?.code);
   }, [book_info]);
@@ -55,8 +63,9 @@ export default function Home() {
           className={!loading ? "visibling" : ""}
         />
         <S.ButtonSection>
+          <PrevButton visible={prev_remain > 1} onClick={() => moveBackward()}/>
           <LinkButton href={button_link}/>
-          <RefreshButton onClick={() => window.location.reload()}/>
+          <NextButton onClick={() => (!loading && moveForward())}/>
         </S.ButtonSection>
         <StyleElements scroll={scroll}/>
       </S.StyledSection>
