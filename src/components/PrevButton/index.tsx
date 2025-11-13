@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { event } from "@/lib/gtag";
 
 // styles
 import * as S from "./style";
@@ -7,6 +8,7 @@ import { IconArrowBigLeftLine } from "@tabler/icons-react";
 const PrevButton = ({visible, onClick}: {visible: boolean, onClick?: () => any}) => {
 
   const onLinkButtonClick = useCallback(() => {
+    event("prev_sentence" as any, {});
     if (onClick) onClick();
   }, [onClick]);
 
