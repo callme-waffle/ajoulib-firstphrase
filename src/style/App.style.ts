@@ -92,4 +92,5 @@ export const ButtonSection = styled.section`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  margin: 0 0 1rem 0;
 `;
