@@ -11,7 +11,8 @@ export const IntroAreaWrap = styled.section`
 
   font-family: var(--font-ajou), sans-serif;
 
-  position: absolute;
+  position: relative;
+  /* top: 10%; */
   left: 50%;
   transform: translate(-50%);
   z-index: 100;
@@ -25,6 +26,8 @@ export const BookTitleLoc = styled.section`
   align-items: flex-start;
   justify-content: center;
 
+  margin-top: 1.5rem;
+
   & h2 {
     font-size: 2rem;
     font-weight: 700;
@@ -37,6 +40,7 @@ export const BookTitleLoc = styled.section`
   }
 
   & h3 {
+    color: black;
     font-size: 1.25rem;
     font-weight: 300;
 
@@ -67,6 +71,7 @@ export const BookLocSpec = styled.section`
   gap: .5rem;
 
   font-family: "Noto Sans KR", sans-serif;
+  color: black;
 
   & span {
     font-size: 1rem;

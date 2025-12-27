@@ -76,3 +76,32 @@ export const getSentence = cache(async (): Promise<{
     }
   }
 }); 
+
+export const getBookURL = cache(async (code: string): Promise<
+  {result: true; url: string;} | 
+  {result: false; reason?: string;}
+> => {
+  try {
+    const request = await fetch(`https://library.ajou.ac.kr/pyxis-api/1/collections/1/search?all=1|k|a|${code}`);
+    const data = await request.json();
+
+    if (data?.data?.totalCount === 0) {
+      return {
+        result: false,
+        reason: "No book found"
+      };
+    }
+
+    const book_id = data.data.list[0].id;
+
+    return {
+      result: true,
+      url: `https://library.ajou.ac.kr/#/search/detail/${book_id}`
+    };
+  } catch(e: any) {
+    return {
+      result: false,
+      reason: e?.message || "Unknown error"
+    };
+  }
+});

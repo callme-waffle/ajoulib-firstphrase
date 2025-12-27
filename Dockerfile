@@ -1,6 +1,9 @@
 # 노드 이미지를 기반으로 Dockerfile 작성
 FROM node:23.11.0-bullseye
 
+ARG G_TRACK_ID
+ENV NEXT_PUBLIC_GOOGLE_ANALYTICS=${G_TRACK_ID}
+
 # 앱 디렉토리 생성
 WORKDIR /usr/src/app
 

@@ -83,3 +83,14 @@ export const StyledSection = styled.section`
 export const TopLogo = styled.img`
   height: 2.5rem;
 `;
+
+export const ButtonSection = styled.section`
+  width: 100%;
+  height: 4.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 1rem 0;
+`;

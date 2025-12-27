@@ -30,6 +30,10 @@ export const ScrollCover = styled.section`
   position: sticky;
   top: 0;
   left: 0;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   overflow-y: hidden;
 
